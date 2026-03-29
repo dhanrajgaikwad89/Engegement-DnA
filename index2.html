@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dhanraj & Apeksha 💕 Engagement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --pink:#fff0f5;
+  --rose:#e8578a;
+  --rose-light:#f7b8d0;
+  --rose-dark:#c0306a;
+  --deep:#5a1a35;
+  --text:#7a2a50;
+  --muted:#c47a99;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--pink);color:var(--text);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#cursor{position:fixed;width:22px;height:22px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);}
+#cursor svg{fill:var(--rose);filter:drop-shadow(0 0 5px rgba(232,87,138,0.7));animation:hb 1.2s ease-in-out infinite;}
+#cursor-trail{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--rose-light);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0.6;}
+@keyframes hb{0%,100%{transform:scale(1);}50%{transform:scale(1.3);}}
+
+/* CANVAS */
+#hc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+
+/* BURST */
+.burst{position:fixed;pointer-events:none;z-index:9997;font-size:1.4rem;animation:ba 0.8s forwards;}
+@keyframes ba{0%{opacity:1;transform:translate(-50%,-50%) scale(0);}60%{opacity:1;transform:translate(-50%,-90%) scale(1.4);}100%{opacity:0;transform:translate(-50%,-130%) scale(0.8);}}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:500;padding:16px 40px;display:flex;justify-content:center;align-items:center;gap:36px;background:rgba(255,240,245,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--rose-light);letter-spacing:0.18em;font-size:0.64rem;text-transform:uppercase;transition:box-shadow 0.3s;}
+nav.scrolled{box-shadow:0 4px 30px rgba(232,87,138,0.15);}
+nav a{color:var(--rose-dark);text-decoration:none;position:relative;padding-bottom:3px;transition:color 0.3s;}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--rose);transition:width 0.3s;}
+nav a:hover{color:var(--rose);}
+nav a:hover::after{width:100%;}
+.nh{font-size:0.75rem;animation:hb 1.4s ease-in-out infinite;color:var(--rose);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 24px 70px;position:relative;background:radial-gradient(ellipse 80% 70% at 50% 0%,#ffd6e766 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,#ffb3cc44 0%,transparent 60%),var(--pink);}
+.hero-tag{font-size:0.65rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--rose);margin-bottom:24px;opacity:0;animation:sD 0.8s 0.4s forwards;}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.4rem,11vw,8rem);font-weight:300;color:var(--deep);line-height:1.0;letter-spacing:0.02em;opacity:0;animation:zI 1s 0.8s forwards;}
+.amp{font-style:italic;color:var(--rose);display:block;font-size:0.58em;animation:pulse 2.5s 2s infinite;}
+.hero-ring{font-size:2.8rem;margin:18px 0;opacity:0;animation:spI 1s 1.4s forwards;}
+.hero-divider{display:flex;align-items:center;gap:14px;margin:16px auto;width:fit-content;opacity:0;animation:sU 0.8s 1.6s forwards;}
+.hero-divider span{display:block;width:70px;height:1px;background:var(--rose-light);}
+.hero-divider svg{width:16px;fill:var(--rose);animation:hb 1.2s ease-in-out infinite;}
+.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,3vw,1.5rem);font-style:italic;color:var(--muted);letter-spacing:0.1em;opacity:0;animation:sU 0.8s 1.8s forwards;}
+.hero-btns{display:flex;gap:14px;margin-top:40px;opacity:0;animation:sU 0.8s 2.1s forwards;flex-wrap:wrap;justify-content:center;}
+.btn{display:inline-block;padding:13px 36px;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.4s;position:relative;overflow:hidden;}
+.btn::before{content:'';position:absolute;inset:0;transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.btn:hover::before{transform:scaleX(1);}
+.btn span{position:relative;z-index:1;}
+.btn-o{border:1px solid var(--rose);color:var(--rose-dark);}
+.btn-o::before{background:var(--rose);}
+.btn-o:hover{color:#fff;}
+.btn-f{background:var(--rose);color:#fff;border:1px solid var(--rose);}
+.btn-f::before{background:var(--rose-dark);}
+.scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fI 1s 2.6s forwards;}
+.scroll-ind span{font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);}
+.sm{width:22px;height:36px;border:2px solid var(--rose-light);border-radius:12px;position:relative;}
+.sd{width:4px;height:7px;background:var(--rose);border-radius:2px;position:absolute;top:5px;left:50%;transform:translateX(-50%);animation:sdA 1.6s ease-in-out infinite;}
+@keyframes sdA{0%{top:5px;opacity:1;}100%{top:18px;opacity:0;}}
+
+/* SECTION */
+section{padding:100px 24px;position:relative;z-index:1;}
+.sl{text-align:center;font-size:0.62rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--rose);margin-bottom:10px;}
+.st{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:300;text-align:center;color:var(--deep);margin-bottom:16px;}
+.sr{display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 56px;}
+.sr::before,.sr::after{content:'';display:block;width:50px;height:1px;background:var(--rose-light);}
+.srh{font-size:0.9rem;color:var(--rose);animation:hb 1.5s ease-in-out infinite;}
+
+/* STORY */
+#story{background:linear-gradient(180deg,#fff5f8 0%,var(--pink) 100%);}
+#story::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,var(--rose-light),var(--rose),var(--rose-light),transparent);}
+.timeline{max-width:800px;margin:0 auto;position:relative;}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(180deg,transparent,var(--rose-light),var(--rose),var(--rose-light),transparent);transform:translateX(-50%);}
+.tl-item{display:flex;gap:44px;margin-bottom:60px;align-items:center;position:relative;}
+.tl-item:nth-child(even){flex-direction:row-reverse;}
+.tl-content{flex:1;background:#fff;border:1px solid var(--rose-light);padding:28px 30px;transition:transform 0.4s,box-shadow 0.4s;cursor:pointer;}
+.tl-content:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(232,87,138,0.14);}
+.tl-dot{width:46px;height:46px;background:#fff;border:2px solid var(--rose);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;z-index:1;transition:transform 0.3s,background 0.3s;cursor:pointer;}
+.tl-dot:hover{transform:scale(1.35);}
+.tl-year{font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:6px;}
+.tl-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--deep);margin-bottom:8px;}
+.tl-text{font-size:0.8rem;line-height:1.95;color:var(--muted);}
+.sq{max-width:640px;margin:60px auto 0;text-align:center;padding:40px 44px;background:linear-gradient(135deg,#fff5f8,#ffe8f0);border-left:3px solid var(--rose);}
+.sq p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.05rem,2.5vw,1.3rem);font-style:italic;line-height:2;color:var(--text);}
+.qm{font-size:4.5rem;color:var(--rose-light);font-family:'Cormorant Garamond',serif;line-height:0.3;display:block;margin-bottom:18px;}
+
+/* GALLERY */
+#gallery{background:var(--pink);}
+.gn{text-align:center;font-size:0.78rem;color:var(--muted);margin-bottom:40px;font-style:italic;}
+.gallery-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.gi{overflow:hidden;position:relative;aspect-ratio:4/5;background:linear-gradient(135deg,#ffd6e7,#ffb3cc);cursor:pointer;}
+.gi.tall{grid-row:span 2;aspect-ratio:unset;}
+.gi::after{content:'';position:absolute;inset:0;border:1px solid rgba(232,87,138,0.3);}
+.gp{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--rose-dark);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;text-align:center;padding:20px;width:100%;height:100%;min-height:180px;transition:transform 0.5s;}
+.gi:hover .gp{transform:scale(1.07);}
+.gp svg{width:28px;opacity:0.5;}
+.go{position:absolute;inset:0;background:rgba(90,26,53,0);display:flex;align-items:center;justify-content:center;transition:background 0.4s;}
+.gi:hover .go{background:rgba(90,26,53,0.25);}
+.go span{color:#fff;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;opacity:0;transform:translateY(8px);transition:all 0.4s;}
+.gi:hover .go span{opacity:1;transform:translateY(0);}
+
+/* LOVE METER */
+#lovemeter{background:linear-gradient(135deg,#fff5f8,#ffe0ec);text-align:center;}
+.love-game{max-width:480px;margin:0 auto;}
+.love-btn{display:inline-block;padding:16px 50px;background:var(--rose);color:#fff;border:none;font-family:'Montserrat',sans-serif;font-size:0.76rem;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden;}
+.love-btn::before{content:'';position:absolute;inset:0;background:var(--rose-dark);transform:scaleY(0);transform-origin:bottom;transition:transform 0.3s;}
+.love-btn:hover::before{transform:scaleY(1);}
+.love-btn span{position:relative;z-index:1;}
+.love-btn:active{transform:scale(0.95);}
+.mw{margin:32px 0;}
+.mb{width:100%;height:30px;background:#ffe0ec;border-radius:15px;overflow:hidden;border:1px solid var(--rose-light);}
+.mf{height:100%;width:0%;background:linear-gradient(90deg,#f7b8d0,var(--rose),var(--rose-dark));border-radius:15px;transition:width 0.5s cubic-bezier(0.34,1.56,0.64,1);position:relative;}
+.mf::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.3),transparent);border-radius:15px;}
+.mp{font-family:'Cormorant Garamond',serif;font-size:3.2rem;font-weight:300;color:var(--rose);margin-top:12px;transition:all 0.4s;}
+.mm{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:1.1rem;min-height:36px;margin-top:8px;}
+
+/* SAVE DATE */
+#savethedate{background:var(--deep);color:#fff;}
+#savethedate .sl{color:var(--rose-light);}
+#savethedate .st{color:#fff;}
+#savethedate .sr::before,#savethedate .sr::after{background:rgba(247,184,208,0.25);}
+.dc{max-width:620px;margin:0 auto;border:1px solid rgba(247,184,208,0.25);padding:60px 44px;position:relative;text-align:center;}
+.dc::before,.dc::after{content:'✦';position:absolute;color:var(--rose);}
+.dc::before{top:16px;left:20px;}
+.dc::after{bottom:16px;right:20px;}
+.bd{font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,7vw,5rem);font-weight:300;color:var(--rose-light);line-height:1;}
+.bd small{display:block;font-size:clamp(0.9rem,2.5vw,1.3rem);color:rgba(247,184,208,0.65);font-style:italic;margin-top:8px;}
+.countdown{display:flex;justify-content:center;gap:24px;margin:44px 0;flex-wrap:wrap;}
+.cu{text-align:center;min-width:72px;}
+.cu .num{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:300;color:var(--rose-light);line-height:1;display:block;transition:transform 0.2s;}
+.cu .num.pop{transform:scale(1.3);}
+.cu .lbl{font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);margin-top:5px;display:block;}
+.cs{font-family:'Cormorant Garamond',serif;font-size:3rem;color:rgba(247,184,208,0.2);align-self:flex-start;padding-top:4px;}
+.vi{margin-top:36px;padding-top:36px;border-top:1px solid rgba(247,184,208,0.12);}
+.vi .vl{font-size:0.58rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--rose);margin-bottom:8px;}
+.vi .vn{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:#fff;margin-bottom:4px;}
+.vi .va{font-size:0.78rem;color:var(--muted);}
+.map-btn{display:inline-block;margin-top:18px;padding:10px 28px;border:1px solid rgba(247,184,208,0.35);color:var(--rose-light);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;transition:all 0.3s;}
+.map-btn:hover{background:var(--rose);border-color:var(--rose);color:#fff;}
+
+/* FOOTER */
+footer{background:var(--deep);text-align:center;padding:52px 24px;border-top:1px solid rgba(247,184,208,0.1);position:relative;z-index:1;}
+.fn{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-style:italic;color:var(--rose-light);margin-bottom:12px;}
+.fh{font-size:1.2rem;margin-bottom:12px;animation:hb 1.5s ease-in-out infinite;}
+footer p{font-size:0.64rem;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;}
+
+/* MUSIC BTN */
+#mb{position:fixed;bottom:28px;right:28px;width:50px;height:50px;background:var(--rose);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:500;box-shadow:0 4px 20px rgba(232,87,138,0.45);transition:transform 0.3s,box-shadow 0.3s;}
+#mb:hover{transform:scale(1.12);box-shadow:0 6px 30px rgba(232,87,138,0.65);}
+#mb svg{width:22px;fill:#fff;}
+.mwr{position:absolute;width:100%;height:100%;border-radius:50%;border:2px solid var(--rose);animation:mr 1.8s ease-out infinite;opacity:0;}
+@keyframes mr{0%{transform:scale(1);opacity:0.6;}100%{transform:scale(2.2);opacity:0;}}
+
+/* KEYFRAMES */
+@keyframes sD{from{opacity:0;transform:translateY(-18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes sU{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+@keyframes zI{from{opacity:0;transform:scale(0.85);}to{opacity:1;transform:scale(1);}}
+@keyframes spI{from{opacity:0;transform:rotate(-180deg) scale(0);}to{opacity:1;transform:rotate(0) scale(1);}}
+@keyframes fI{from{opacity:0;}to{opacity:1;}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.fl{transform:translateX(-40px);}
+.reveal.fr{transform:translateX(40px);}
+.reveal.visible{opacity:1;transform:translate(0);}
+
+@media(max-width:700px){
+  nav{gap:14px;font-size:0.58rem;padding:14px 14px;}
+  .nh{display:none;}
+  .timeline::before{left:20px;}
+  .tl-item,.tl-item:nth-child(even){flex-direction:column;align-items:flex-start;padding-left:52px;}
+  .tl-dot{position:absolute;left:0;top:0;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gi.tall{grid-row:span 1;aspect-ratio:4/5;}
+  .countdown{gap:10px;}
+  .dc{padding:36px 18px;}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"><svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+<div id="cursor-trail"></div>
+<canvas id="hc"></canvas>
+
+<!-- MUSIC -->
+<button id="mb" title="Play music note ♪">
+  <div class="mwr"></div>
+  <svg id="mi" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+</button>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#story">Our Story</a>
+  <span class="nh">💕</span>
+  <a href="#gallery">Gallery</a>
+  <span class="nh">💕</span>
+  <a href="#lovemeter">Love Meter</a>
+  <span class="nh">💕</span>
+  <a href="#savethedate">Save the Date</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-tag">✨ We're Getting Engaged ✨</p>
+  <h1 class="hero-names">
+    Dhanraj
+    <span class="amp">& Apeksha</span>
+  </h1>
+  <div class="hero-ring">💍</div>
+  <div class="hero-divider">
+    <span></span>
+    <svg viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    <span></span>
+  </div>
+  <p class="hero-date">28th May 2026 &nbsp;·&nbsp; Mauli Garden, Pune</p>
+  <div class="hero-btns">
+    <a href="#story" class="btn btn-o"><span>Our Story</span></a>
+    <a href="#savethedate" class="btn btn-f"><span>Save the Date 💕</span></a>
+  </div>
+  <div class="scroll-ind">
+    <div class="sm"><div class="sd"></div></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- STORY -->
+<section id="story">
+  <p class="sl reveal">Our Journey</p>
+  <h2 class="st reveal">Our Love Story</h2>
+  <div class="sr reveal"><span class="srh">💗</span></div>
+
+  <div class="timeline">
+    <div class="tl-item reveal fl">
+      <div class="tl-content">
+        <p class="tl-year">The Beginning</p>
+        <h3 class="tl-title">🌸 The First Meeting</h3>
+        <p class="tl-text">Two souls, one serendipitous moment. What began as a chance encounter slowly blossomed into something neither of them could have imagined — a connection deeper than words could ever describe.</p>
+      </div>
+      <div class="tl-dot">🌸</div>
+    </div>
+    <div class="tl-item reveal fr">
+      <div class="tl-content">
+        <p class="tl-year">Growing Together</p>
+        <h3 class="tl-title">💛 Falling in Love</h3>
+        <p class="tl-text">Through shared laughter, long conversations, and quiet evenings, Dhanraj and Apeksha discovered in each other a love that felt both gentle and certain — like coming home after a long, beautiful journey.</p>
+      </div>
+      <div class="tl-dot">💛</div>
+    </div>
+    <div class="tl-item reveal fl">
+      <div class="tl-content">
+        <p class="tl-year">Forever Begins</p>
+        <h3 class="tl-title">💍 The Proposal</h3>
+        <p class="tl-text">With a heart full of love and a lifetime of promises, Dhanraj asked the question that would change everything. And with a joyful yes, their forever truly and beautifully began.</p>
+      </div>
+      <div class="tl-dot">💍</div>
+    </div>
+  </div>
+
+  <div class="sq reveal">
+    <span class="qm">"</span>
+    <p>Some love stories are written in the stars, meant to find each other across time and distance. Dhanraj and Apeksha's love is one such tale — quiet in its beginnings, radiant in its truth, and boundless in its promise for all the years ahead.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <p class="sl reveal">Moments Together</p>
+  <h2 class="st reveal">Our Gallery</h2>
+  <div class="sr reveal"><span class="srh">📸</span></div>
+  <p class="gn reveal">Add your favourite photos to fill this with your beautiful memories 💕</p>
+  <div class="gallery-grid reveal">
+    <div class="gi tall">
+      <div class="gp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Your Photo</span></div>
+      <div class="go"><span>View 💕</span></div>
+    </div>
+    <div class="gi">
+      <div class="gp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Your Photo</span></div>
+      <div class="go"><span>View 💕</span></div>
+    </div>
+    <div class="gi">
+      <div class="gp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Your Photo</span></div>
+      <div class="go"><span>View 💕</span></div>
+    </div>
+    <div class="gi">
+      <div class="gp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Your Photo</span></div>
+      <div class="go"><span>View 💕</span></div>
+    </div>
+    <div class="gi">
+      <div class="gp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg><span>Your Photo</span></div>
+      <div class="go"><span>View 💕</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOVE METER -->
+<section id="lovemeter">
+  <p class="sl reveal">Interactive</p>
+  <h2 class="st reveal">💕 Love Meter</h2>
+  <div class="sr reveal"><span class="srh">💖</span></div>
+  <div class="love-game reveal">
+    <p style="font-size:0.82rem;color:var(--muted);margin-bottom:28px;line-height:1.8;">How much do Dhanraj &amp; Apeksha love each other?<br>Click below to find out! 💗</p>
+    <button class="love-btn" onclick="runLove()"><span>💕 Calculate Love</span></button>
+    <div class="mw">
+      <div class="mb"><div class="mf" id="mf"></div></div>
+      <div class="mp" id="mp">?</div>
+      <div class="mm" id="mm">Press the button to reveal...</div>
+    </div>
+  </div>
+</section>
+
+<!-- SAVE DATE -->
+<section id="savethedate">
+  <p class="sl reveal">Mark Your Calendar</p>
+  <h2 class="st reveal">Save the Date</h2>
+  <div class="sr reveal"><span class="srh">📅</span></div>
+  <div class="dc reveal">
+    <div class="bd">28 · 05 · 2026<small>Thursday, 28th May 2026</small></div>
+    <div class="countdown">
+      <div class="cu"><span class="num" id="cd-d">--</span><span class="lbl">Days</span></div>
+      <span class="cs">:</span>
+      <div class="cu"><span class="num" id="cd-h">--</span><span class="lbl">Hours</span></div>
+      <span class="cs">:</span>
+      <div class="cu"><span class="num" id="cd-m">--</span><span class="lbl">Minutes</span></div>
+      <span class="cs">:</span>
+      <div class="cu"><span class="num" id="cd-s">--</span><span class="lbl">Seconds</span></div>
+    </div>
+    <div class="vi">
+      <p class="vl">Venue</p>
+      <p class="vn">Mauli Garden</p>
+      <p class="va">Katraj, Pune, Maharashtra</p>
+      <a class="map-btn" href="https://maps.google.com/?q=Mauli+Garden+Katraj+Pune" target="_blank">📍 View on Map</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fh">💕 💍 💕</div>
+  <p class="fn">Dhanraj &amp; Apeksha</p>
+  <p>With all our love &nbsp;·&nbsp; 28 May 2026 &nbsp;·&nbsp; Mauli Garden, Pune</p>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cursor'),tr=document.getElementById('cursor-trail');
+let mx=0,my=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
+  setTimeout(()=>{tr.style.left=mx+'px';tr.style.top=my+'px';},90);
+});
+
+/* CLICK BURST */
+document.addEventListener('click',e=>{
+  const arr=['💕','💗','💖','💝','🌸','✨','💍','🌹'];
+  const n=3+Math.floor(Math.random()*3);
+  for(let i=0;i<n;i++){
+    const el=document.createElement('div');
+    el.className='burst';
+    el.textContent=arr[Math.floor(Math.random()*arr.length)];
+    el.style.left=(e.clientX+(Math.random()-0.5)*40)+'px';
+    el.style.top=(e.clientY+(Math.random()-0.5)*20)+'px';
+    el.style.animationDelay=(i*0.08)+'s';
+    document.body.appendChild(el);
+    setTimeout(()=>el.remove(),900);
+  }
+});
+
+/* CANVAS HEARTS */
+const canvas=document.getElementById('hc');
+const ctx=canvas.getContext('2d');
+function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+const cols=['rgba(232,87,138,','rgba(247,150,185,','rgba(247,184,208,','rgba(192,48,106,'];
+class H{
+  constructor(randomY){
+    this.reset(randomY);
+  }
+  reset(randomY){
+    this.x=Math.random()*canvas.width;
+    this.y=randomY?Math.random()*canvas.height:canvas.height+30;
+    this.s=Math.random()*16+5;
+    this.sp=Math.random()*1.1+0.3;
+    this.op=Math.random()*0.45+0.08;
+    this.dr=(Math.random()-0.5)*0.5;
+    this.ang=Math.random()*Math.PI*2;
+    this.spin=(Math.random()-0.5)*0.03;
+    this.col=cols[Math.floor(Math.random()*cols.length)];
+  }
+  draw(){
+    ctx.save();
+    ctx.translate(this.x,this.y);
+    ctx.rotate(this.ang);
+    ctx.globalAlpha=this.op;
+    ctx.fillStyle=this.col+'1)';
+    ctx.beginPath();
+    const s=this.s;
+    ctx.moveTo(0,-s*0.28);
+    ctx.bezierCurveTo(s*0.5,-s,s,-s*0.28,0,s*0.6);
+    ctx.bezierCurveTo(-s,-s*0.28,-s*0.5,-s,0,-s*0.28);
+    ctx.fill();
+    ctx.restore();
+  }
+  update(){
+    this.y-=this.sp;this.x+=this.dr;this.ang+=this.spin;
+    if(this.y<-40)this.reset(false);
+  }
+}
+const hearts=Array.from({length:35},(_,i)=>new H(i<20));
+function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hearts.forEach(h=>{h.draw();h.update();});
+  requestAnimationFrame(loop);
+}
+loop();
+
+/* NAV */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>60);
+});
+
+/* REVEAL */
+const revs=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*90);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+revs.forEach(el=>obs.observe(el));
+
+/* COUNTDOWN */
+let ps=-1;
+function tick(){
+  const diff=new Date('2026-05-28T00:00:00')-new Date();
+  if(diff<=0){['cd-d','cd-h','cd-m','cd-s'].forEach(id=>document.getElementById(id).textContent='00');return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+  const se=document.getElementById('cd-s');
+  se.textContent=String(s).padStart(2,'0');
+  if(s!==ps){se.classList.add('pop');setTimeout(()=>se.classList.remove('pop'),200);ps=s;}
+}
+tick();setInterval(tick,1000);
+
+/* LOVE METER */
+const msgs=['Just getting started... 🌱','Something is blooming! 🌸','Love is in the air! 💕','This is getting beautiful! 🌹','Deeply, madly in love! 💗','True soulmates! 💖','Written in the stars! ✨','Infinite love! 💍','Perfect match — forever! 💞','∞ Eternal love — 100%! 💍💕'];
+let lv=0,li=null;
+function runLove(){
+  if(li)clearInterval(li);
+  lv=0;
+  const tgt=92+Math.floor(Math.random()*9);
+  li=setInterval(()=>{
+    lv+=Math.random()*3.5+1;
+    if(lv>=tgt){lv=tgt;clearInterval(li);fireBurst();}
+    const v=Math.min(Math.round(lv),100);
+    document.getElementById('mf').style.width=v+'%';
+    document.getElementById('mp').textContent=v+'%';
+    document.getElementById('mm').textContent=msgs[Math.min(Math.floor(v/11),msgs.length-1)];
+  },40);
+}
+function fireBurst(){
+  for(let i=0;i<10;i++){
+    setTimeout(()=>{
+      const b=document.createElement('div');b.className='burst';
+      b.textContent=['💕','💖','💗','✨','💍','🌸'][Math.floor(Math.random()*6)];
+      b.style.left=(20+Math.random()*60)+'vw';
+      b.style.top=(30+Math.random()*40)+'vh';
+      document.body.appendChild(b);setTimeout(()=>b.remove(),900);
+    },i*110);
+  }
+}
+
+/* CARD TILT */
+document.querySelectorAll('.tl-content').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-0.5;
+    const y=(e.clientY-r.top)/r.height-0.5;
+    c.style.transform=`translateY(-6px) rotateX(${-y*5}deg) rotateY(${x*5}deg)`;
+  });
+  c.addEventListener('mouseleave',()=>c.style.transform='');
+});
+
+/* MUSIC */
+let audioCtx=null;
+document.getElementById('mb').addEventListener('click',function(){
+  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const scale=[523,587,659,698,784,659,587,523,698,784,880,784];
+  let t=audioCtx.currentTime;
+  scale.forEach((f,i)=>{
+    const o=audioCtx.createOscillator();
+    const g=audioCtx.createGain();
+    o.connect(g);g.connect(audioCtx.destination);
+    o.frequency.value=f;o.type='sine';
+    g.gain.setValueAtTime(0,t+i*0.22);
+    g.gain.linearRampToValueAtTime(0.09,t+i*0.22+0.05);
+    g.gain.linearRampToValueAtTime(0,t+i*0.22+0.2);
+    o.start(t+i*0.22);o.stop(t+i*0.22+0.25);
+  });
+  this.style.transform='scale(0.9)';
+  setTimeout(()=>this.style.transform='',200);
+});
+</script>
+</body>
+</html>
